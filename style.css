@@ -92,10 +92,112 @@ input[type="white-button"]:focus {
     margin-left: -8px;
     margin-right: -8px;
     padding:  16px 0 16px;
-    display: none;
 }
 
 .dashboard-section {
-    display: none;
+    margin-top: -180px
 }
 
+/* File Upload */
+
+#upload-subsection {
+    width: 60%;
+    margin: auto;
+}
+
+#file-image {
+    max-width: 60%;
+    margin: 8px;
+}
+
+.uploader {
+    display: block;
+    clear: both;
+    margin: 0 auto;
+    max-width: 80%;
+  }
+  .uploader label {
+    font-weight: 400;
+    float: left;
+    clear: both;
+    width: 100%;
+    padding: 16px 0 8px;
+    text-align: center;
+    border-radius: 2px;
+    border: 2px solid #eee;
+    transition: all .2s ease;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  }
+  .uploader label:hover {
+    border-color: #454cad;
+  }
+  .uploader label.hover {
+    border: 3px solid #454cad;
+    box-shadow: inset 0 0 0 6px #eee;
+  }
+  .uploader label.hover #start i.fa {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+    opacity: 0.3;
+  }
+  .uploader #start {
+    float: left;
+    clear: both;
+    width: 100%;
+  }
+  .hidden {
+    display: none;
+  }
+  .uploader #start i.fa {
+    font-size: 50px;
+    margin-bottom: 1rem;
+    transition: all .2s ease-in-out;
+  }
+  .uploader #response {
+    float: left;
+    clear: both;
+    width: 100%;
+  }
+  .uploader #response #messages {
+    margin-bottom: .5rem;
+  }
+  .uploader #notimage {
+    float: left;
+    clear: both;
+    width: 100%;
+  }
+  .uploader progress,
+  .uploader .progress {
+    display: inline;
+    clear: both;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 180px;
+    height: 8px;
+    border: 0;
+    border-radius: 4px;
+    background-color: #eee;
+    overflow: hidden;
+  }
+  .uploader .progress[value]::-webkit-progress-bar {
+    border-radius: 4px;
+    background-color: #eee;
+  }
+  .uploader .progress[value]::-webkit-progress-value {
+    background: linear-gradient(to right, #393f90 0%, #454cad 50%);
+    border-radius: 4px;
+  }
+  .uploader .progress[value]::-moz-progress-bar {
+    background: linear-gradient(to right, #393f90 0%, #454cad 50%);
+    border-radius: 4px;
+  }
+  .uploader input[type="file"] {
+    display: none;
+  }
+  .uploader div {
+    margin: 0 0 .5rem 0;
+  }
+  

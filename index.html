@@ -24,7 +24,7 @@
         
     </head>
     <body>
-        <header class="navbar" id="top-navbar">
+        <header class="navbar hidden" id="top-navbar">
             <div class="container">
                <a href="#" onclick="greet()"><img alt="Mapa do Gato de Arnold" class="header-img" src="header.png"></img></a>
             </div>
@@ -38,13 +38,31 @@
             </div>
         </div>
 
-        <div class="section dashboard-section" id="dashboard">
+        <div class="section dashboard-section hidden" id="dashboard">
             <div class="container">
                 <canvas id="arnold-canvas"></canvas>
-                <div id="panel">
+                <div id="panel" class="hidden">
+                        <img id="file-image" src="#" alt="Imagem" class="hidden">
+                        <br>
                         <a class="button accent-button sized-button fix-width" onclick="nextIteration()">Aplicar transformação <strong>></strong></a>
-                        <a class="button accent-button sized-button fix-width" onclick="nextIteration()">Aplicar t. inversa <strong><</strong></a><br>
-                        <a class="button white-button" onclick="nextIteration()">Aplicar até chegar na forma original</a>
+                        <a class="button accent-button sized-button fix-width" onclick="previousIteration()">Aplicar t. inversa <strong><</strong></a><br>
+                        <a class="button white-button" onclick="iterateUntilOriginal()">Aplicar até chegar na forma original</a>
+                </div>
+                <div id="upload-subsection">
+                        <form id="file-upload-form" class="uploader">
+                                <input id="file-upload" type="file" name="fileUpload" accept="image/*" />
+                              
+                                <label for="file-upload" id="file-drag">
+                                  <div id="start">
+                                    <div>Selecione um arquivo ou arraste-o aqui</div>
+                                    <div id="notimage" class="hidden">Por favor, selecione uma imagem.</div>
+                                    <span id="file-upload-button" class="button accent-button">Selecionar um arquivo</span>
+                                  </div>
+                                  <div id="response" class="hidden">
+                                    <div id="messages"></div>
+                                  </div>
+                                </label>
+                              </form>
                 </div>
             </div>
         </div>
