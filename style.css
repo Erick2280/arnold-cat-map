@@ -105,9 +105,9 @@ input[type="white-button"]:focus {
     margin: auto;
 }
 
-#file-image {
+#arnold-canvas {
+    margin-top: 20%;
     max-width: 60%;
-    margin: 8px;
 }
 
 .uploader {

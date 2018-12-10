@@ -61,7 +61,6 @@ function loadImage(){
       // Processa o objeto File
       for (var i = 0, f; f = files[i]; i++) {
         parseFile(f);
-        uploadFile(f);
       }
     }
   
@@ -87,10 +86,10 @@ function loadImage(){
         document.getElementById('response').classList.remove("hidden");
         document.getElementById('notimage').classList.add("hidden");
         // Carrega a visualização da imagem
-        document.getElementById('file-image').classList.remove("hidden");
         document.getElementById('file-image').src = URL.createObjectURL(file);
+        document.getElementById('file-image').addEventListener("load", loadCanvas, false);
+
         document.getElementById("panel").classList.remove("hidden");
-        loadCanvas();
       }
       else {
         document.getElementById('file-image').classList.add("hidden");
@@ -110,6 +109,12 @@ function loadImage(){
     }
   }
   loadImage();
+
+  function loadCanvas() {
+    var context = canvas.getContext("2d");
+    var img = document.getElementById("file-image");
+    context.drawImage(img, 10, 10);
+  }
 
 
 
