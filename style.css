@@ -3,6 +3,7 @@ body {
     color: white;
     background-color: #24214a;
     background-image: url(bg.svg);
+    background-size: 100%;
 }
 
 .section {
