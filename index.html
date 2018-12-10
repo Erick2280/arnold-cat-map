@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Mapa do Gato de Arnold</title>
+        <meta name="description" content="Implementação em JS do Mapa do Gato de Arnold">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- CSS -->
+        <!-- Utilizamos o boilerplate Skeleton (licença MIT, Dave Gamache), recomendado para facilitar pequenos projetos, como este. -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+        <link rel="stylesheet" href="style.css">
+
+        <!-- FONTE -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+
+        <!-- JS -->
+        <script src="miau.js" async defer></script>
+        
+    </head>
+    <body>
+        <header class="navbar" id="top-navbar">
+            <div class="container">
+               <a href onclick="greet()"><img alt="Mapa do Gato de Arnold" class="header-img" src="header.png"></img></a>
+            </div>
+        </header>
+
+        <div class="section greetings-section" id="greetings">
+            <div class="container">
+                <img alt="Aplicações da Álgebra Linear: Mapa do Gato de Arnold" class="hero-img" src="hero.svg"></img>
+                <p class="section-description">O Mapa do Gato de Arnold é um experimento que pode ser aplicado em objetos que podem ser representados com matrizes, como imagens. Sucessivas transformações são realizadas em uma imagem, que dão a impressão que os pixels foram "embaralhados". Entretanto, ao aplicar a transformação várias vezes, a imagem retorna à sua forma original.</p>
+                <a class="button accent-button sized-button" onclick="startDashboard()">Carregar imagem</a>
+            </div>
+        </div>
+
+        <div class="section dashboard-section" id="dashboard">
+            <div class="container">
+                <canvas id="arnold-canvas"></canvas>
+                <div id="panel">
+                        <a class="button accent-button sized-button fix-width" onclick="nextIteration()">Aplicar transformação <strong>></strong></a>
+                        <a class="button accent-button sized-button fix-width" onclick="nextIteration()">Aplicar t. inversa <strong><</strong></a><br>
+                        <a class="button white-button" onclick="nextIteration()">Aplicar até chegar na forma original</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!--[if lt IE 7]>
+            <p class="browsehappy">Você está usando um navegador <strong>antigo</strong>. Por favor, <a href="https://www.google.com/chrome/">atualize seu navegador</a> para melhorar sua experiência.</p>
+            <![endif]-->
+            
+    </body>
+</html>

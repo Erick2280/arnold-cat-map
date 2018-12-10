@@ -1,0 +1,100 @@
+body {
+    font-family: 'Fira Sans', sans-serif;
+    color: white;
+    background-color: #24214a;
+    background-image: url(bg.svg);
+}
+
+.section {
+    padding: 4rem 0 7rem;
+    text-align: center;
+}
+
+.section-heading,
+.section-description {
+    margin-bottom: 1.2rem;
+}
+
+.button {
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.accent-button {
+    background-color: #5952b2;
+    border-color: #5952b2;
+    color: white;
+}
+
+.sized-button {
+    font-size: 18px;
+}
+
+.fix-width {
+    min-width: 360px;
+}
+
+.white-button {
+    background-color: white;
+    border-color: white;
+    color: #5952b2;
+}
+
+.accent-button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="white-button"]:hover,
+.white-button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="white-button"]:focus {
+    color: #e2e2e2;
+    border-color: #5952b2;
+    outline: 0;
+}
+
+.white-button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="white-button"]:hover,
+.white-button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="white-button"]:focus {
+    color: #24214a;
+    border-color: white;
+    outline: 0;
+}
+
+.hero-img {
+    width: 80%;
+    margin-bottom: 28px;
+}
+
+.header-img {
+    height: 30px;
+    margin-top: -2px;
+    margin-bottom: -8px;
+}
+
+.section-description {
+    margin-bottom: 28px;
+}
+
+.navbar {
+    background-color: #5952b2;
+    margin-top: -8px;
+    margin-left: -8px;
+    margin-right: -8px;
+    padding:  16px 0 16px;
+    display: none;
+}
+
+.dashboard-section {
+    display: none;
+}
+
