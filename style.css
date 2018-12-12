@@ -100,7 +100,7 @@ input[type="white-button"]:focus {
 
 /* Arnold Canvas */
 #arnold-canvas {
-    margin-top: 60px;
+    margin: 60px 8px 8px;
 }
 
 /* File Upload */

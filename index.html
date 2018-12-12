@@ -9,6 +9,7 @@
         <title>Mapa do Gato de Arnold</title>
         <meta name="description" content="Implementação em JS do Mapa do Gato de Arnold">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
         
         <!-- CSS -->
         <!-- Utilizamos o boilerplate Skeleton (licença MIT, Dave Gamache), recomendado para facilitar pequenos projetos, como este. -->
@@ -21,6 +22,9 @@
 
         <!-- JS -->
         <script src="miau.js" async defer></script>
+
+        <!-- Ícones -->
+        <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
         
     </head>
     <body>
@@ -47,6 +51,8 @@
                         <a class="button accent-button sized-button fix-width" onclick="nextIteration()">Aplicar transformação <strong>></strong></a>
                         <a class="button accent-button sized-button fix-width" onclick="previousIteration()">Aplicar t. inversa <strong><</strong></a><br>
                         <a class="button white-button" onclick="iterateUntilOriginal()">Aplicar até chegar na forma original</a>
+                        <h3>Iteração <strong id="it-number">0</strong></h3>
+
                 </div>
                 <div id="upload-subsection">
                         <form id="file-upload-form" class="uploader">

@@ -6,8 +6,8 @@
  * curso de Ciência da Computação da Universidade Federal de Pernambuco
  */
 
-// todo: spinner animate svgize
 
+// Funções do SPA (single-page-application)
 function startDashboard() {
     document.getElementById("greetings").classList.add("hidden");
     document.getElementById("top-navbar").classList.remove("hidden");
@@ -19,6 +19,11 @@ function greet() {
     document.getElementById("top-navbar").classList.add("hidden");
     document.getElementById("dashboard").classList.add("hidden");
 }
+
+// Inicializa as variáveis
+var canvasCtx, imgData, imgOriginal, imgNext;
+var iteration = 0;
+
 
 // File Upload
 function loadImage(){
@@ -96,6 +101,14 @@ function loadImage(){
 
           // Esconde a imagem
           document.getElementById("file-image").classList.add("hidden");
+
+          // Configura o painel
+          canvasCtx = document.getElementById('arnold-canvas').getContext("2d");
+          iteration = 0;
+
+          // Salva a imagem original
+          imgOriginal = canvasCtx.getImageData(0, 0, document.getElementById('arnold-canvas').width, document.getElementById('arnold-canvas').height);
+
         }, 400);
 
       }
@@ -118,17 +131,101 @@ function loadImage(){
   loadImage();
 
 function loadCanvas(image) {
-
+  // Parametriza o canvas novo, desenha a imagem e retorna
   var canvas = document.createElement("canvas");
   canvas.id = "arnold-canvas"
   canvas.width = image.width;
-  canvas.height = image.height;
-  canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.height);
+  canvas.height = image.width;
+  canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.width);
   
   return canvas;
 }
 
+function refreshVariables() {
+  imgData = canvasCtx.getImageData(0, 0, document.getElementById('arnold-canvas').width, document.getElementById('arnold-canvas').height);
+  imgNext = canvasCtx.getImageData(0, 0, document.getElementById('arnold-canvas').width, document.getElementById('arnold-canvas').height);
+}
 
+
+function nextIteration() {
+  // Limpa variáveis
+  refreshVariables();
+
+  // Faz a próxima iteração
+  var data = imgData.data;
+  var nextData = imgNext.data;
+  var source = 0;
+  var dataWidth = Math.sqrt(data.length >> 2);
+  for (var y = 0; y < dataWidth; y++) {  // Varre os elementos y da matriz
+    for (var x = 0; x < dataWidth; x++) {  // Varre os elementos x da matriz
+      var xNew = (2 * x + y) % dataWidth; // Define o novo x como 2x + y (módulo do tamanho da imagem)
+      var yNew = (x + y) % dataWidth; // Define o novo y como x + y (módulo do tamanho da imagem)
+      // Isso é o mesmo que dizer que T(x, y) = (2x + y, x + y).
+      var destination = (yNew * dataWidth + xNew) * 4;
+        for (var j=0; j<4; j++) {
+          // Transformação para a frente
+          nextData[destination++] = data[source++];
+        }
+    }
+  }
+  // Salva a iteração num local temporário
+  var tmp = imgData;
+  imgData = imgNext;
+  imgNext = tmp;
+
+  // Salva a iteração no canvas
+  canvasCtx.putImageData(imgData, 0, 0)
+
+  // Atualiza a iteração
+  iteration++;
+  document.getElementById("it-number").innerHTML = iteration;
+
+}
+
+function previousIteration() {
+  // Limpa variáveis
+  refreshVariables();
+
+  // Faz a próxima iteração
+  var data = imgData.data;
+  var nextData = imgNext.data;
+  var source = 0;
+  var dataWidth = Math.sqrt(data.length >> 2);
+  for (var y = 0; y < dataWidth; y++) {  // Varre os elementos y da matriz
+    for (var x = 0; x < dataWidth; x++) {  // Varre os elementos x da matriz
+      var xNew = (2 * x + y) % dataWidth;
+      var yNew = (x + y) % dataWidth;
+      var destination = (yNew * dataWidth + xNew) * 4;
+        for (var j=0; j<4; j++) {
+          // Transformação para trás
+          nextData[source++] = data[destination++];
+          // Aqui temos uma pequena diferença nessa linha: o source e o destination da imagem estão trocados.
+          // Estamos fazendo a inversa da transformação
+          // Isso é o mesmo que dizer que T(2x + y, x + y) = (2x + y, x + y).
+        }
+    }
+  }
+  // Salva a iteração num local temporário
+  var tmp = imgData;
+  imgData = imgNext;
+  imgNext = tmp;
+
+  // Salva a iteração no canvas
+  canvasCtx.putImageData(imgData, 0, 0)
+
+  // Atualiza a iteração
+  iteration--;
+  document.getElementById("it-number").innerHTML = iteration;
+}
+
+function iterateUntilOriginal() {
+  // Limpa variáveis
+  // refreshVariables();
+  
+  // while (imgData.data != imgOriginal.data) {
+  // Itera quantas vezes for necessário, até a matriz ficar original.
+    // nextIteration();
+}
 
 
 /* "Quando o cachorro encontra o gato 
