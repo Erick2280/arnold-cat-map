@@ -6,7 +6,7 @@
  * curso de Ciência da Computação da Universidade Federal de Pernambuco
  */
 
-// todo: silvio spinner animate svgize
+// todo: spinner animate svgize
 
 function startDashboard() {
     document.getElementById("greetings").classList.add("hidden");
@@ -20,10 +20,7 @@ function greet() {
     document.getElementById("dashboard").classList.add("hidden");
 }
 
-var canvas = document.getElementById('arnold-canvas');
-
 // File Upload
-
 function loadImage(){
     function initialize() {
 
@@ -61,7 +58,6 @@ function loadImage(){
       // Processa o objeto File
       for (var i = 0, f; f = files[i]; i++) {
         parseFile(f);
-        uploadFile(f);
       }
     }
   
@@ -90,10 +86,20 @@ function loadImage(){
         document.getElementById('file-image').classList.remove("hidden");
         document.getElementById('file-image').src = URL.createObjectURL(file);
         document.getElementById("panel").classList.remove("hidden");
-        loadCanvas();
+        // Remove antigo canvas
+        let oldCanvas = document.getElementById('arnold-canvas')
+        oldCanvas.parentNode.removeChild(oldCanvas);
+
+        setTimeout(function(){
+          // Desenha o canvas novo
+          document.getElementById("panel").insertBefore(loadCanvas(document.getElementById('file-image')), document.getElementById('file-image'));
+
+          // Esconde a imagem
+          document.getElementById("file-image").classList.add("hidden");
+        }, 400);
+
       }
       else {
-        document.getElementById('file-image').classList.add("hidden");
         document.getElementById('notimage').classList.remove("hidden");
         document.getElementById('start').classList.remove("hidden");
         document.getElementById('response').classList.add("hidden");
@@ -102,7 +108,7 @@ function loadImage(){
       }
     }
   
-    // Check for the various File API support.
+    // Verifica se existe suporte ao File API.
     if (window.File && window.FileList && window.FileReader) {
       initialize();
     } else {
@@ -110,6 +116,17 @@ function loadImage(){
     }
   }
   loadImage();
+
+function loadCanvas(image) {
+
+  var canvas = document.createElement("canvas");
+  canvas.id = "arnold-canvas"
+  canvas.width = image.width;
+  canvas.height = image.height;
+  canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.height);
+  
+  return canvas;
+}
 
 
 

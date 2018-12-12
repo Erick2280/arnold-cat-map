@@ -95,7 +95,12 @@ input[type="white-button"]:focus {
 }
 
 .dashboard-section {
-    margin-top: -180px
+    margin-top: -50px;
+}
+
+/* Arnold Canvas */
+#arnold-canvas {
+    margin-top: 60px;
 }
 
 /* File Upload */
@@ -107,7 +112,7 @@ input[type="white-button"]:focus {
 
 #file-image {
     max-width: 60%;
-    margin: 8px;
+    margin: 60px 8px 8px;
 }
 
 .uploader {
