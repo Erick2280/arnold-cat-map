@@ -105,11 +105,13 @@ function loadImage(){
           // Configura o painel
           canvasCtx = document.getElementById('arnold-canvas').getContext("2d");
           iteration = 0;
+          document.getElementById("it-number").innerHTML = iteration;
+
 
           // Salva a imagem original
           imgOriginal = canvasCtx.getImageData(0, 0, document.getElementById('arnold-canvas').width, document.getElementById('arnold-canvas').height);
 
-        }, 400);
+        }, 400); // 400 milissegundos pra não travar rs
 
       }
       else {
@@ -220,11 +222,10 @@ function previousIteration() {
 
 function iterateUntilOriginal() {
   // Limpa variáveis
-  // refreshVariables();
+  refreshVariables();
   
-  // while (imgData.data != imgOriginal.data) {
   // Itera quantas vezes for necessário, até a matriz ficar original.
-    // nextIteration();
+  // TODO
 }
 
 
